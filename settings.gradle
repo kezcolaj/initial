@@ -1,0 +1,4 @@
+rootProject.name = 'initial'
+
+include 'library'
+include 'application'
