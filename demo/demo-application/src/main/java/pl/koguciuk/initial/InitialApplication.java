@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
+import pl.koguciuk.initial.config.ApplicationSecurityConfig;
 import pl.koguciuk.initial.config.LibraryConfig;
 
 @SpringBootApplication
@@ -11,7 +12,8 @@ import pl.koguciuk.initial.config.LibraryConfig;
         "pl.koguciuk.initial.*"
 })
 @Import({
-        LibraryConfig.class
+        LibraryConfig.class,
+        ApplicationSecurityConfig.class
 })
 public class InitialApplication {
 
