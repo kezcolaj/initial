@@ -1,0 +1,7 @@
+dependencies {
+    implementation project(':library')
+    implementation project(':demo:demo-api')
+
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+}

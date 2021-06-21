@@ -1,4 +1,5 @@
 rootProject.name = 'initial'
 
 include 'library'
-include 'application'
+include 'demo:demo-api'
+include 'demo:demo-application'
