@@ -1,4 +1,4 @@
-package pl.koguciuk.initial.config;
+package pl.koguciuk.initial.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
-import pl.koguciuk.initial.config.ApplicationSecurityConfig;
-import pl.koguciuk.initial.config.LibraryConfig;
+import pl.koguciuk.initial.security.config.ApplicationSecurityConfig;
+import pl.koguciuk.initial.security.config.LibraryConfig;
 
 @SpringBootApplication
 @ComponentScan({
