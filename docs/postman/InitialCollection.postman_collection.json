@@ -9,33 +9,61 @@
 			"name": "student",
 			"item": [
 				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"postman.setGlobalVariable(\"token\",postman.getResponseHeader(\"Authorization\") );"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"adminTrainee\",\n    \"password\": \"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "management",
 					"item": [
 						{
 							"name": "getAllStudents",
 							"request": {
-								"auth": {
-									"type": "basic",
-									"basic": [
-										{
-											"key": "username",
-											"value": "admin",
-											"type": "string"
-										},
-										{
-											"key": "password",
-											"value": "password123",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [
 									{
-										"key": "X-CSRF-TOKEN",
-										"value": "Fetch",
-										"type": "text",
-										"disabled": true
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -57,26 +85,11 @@
 						{
 							"name": "InsertStudent",
 							"request": {
-								"auth": {
-									"type": "basic",
-									"basic": [
-										{
-											"key": "username",
-											"value": "admin",
-											"type": "string"
-										},
-										{
-											"key": "password",
-											"value": "password123",
-											"type": "string"
-										}
-									]
-								},
 								"method": "POST",
 								"header": [
 									{
-										"key": "X-XSRF-TOKEN",
-										"value": "0c7a4369-5ef4-46d3-8347-cd45a33a7e05",
+										"key": "Authorization",
+										"value": "{{token}}",
 										"type": "text"
 									}
 								],
@@ -108,26 +121,11 @@
 						{
 							"name": "DeleteStudent",
 							"request": {
-								"auth": {
-									"type": "basic",
-									"basic": [
-										{
-											"key": "password",
-											"value": "password123",
-											"type": "string"
-										},
-										{
-											"key": "username",
-											"value": "admin",
-											"type": "string"
-										}
-									]
-								},
 								"method": "DELETE",
 								"header": [
 									{
-										"key": "X-XSRF-TOKEN",
-										"value": "0c7a4369-5ef4-46d3-8347-cd45a33a7e05",
+										"key": "Authorization",
+										"value": "{{token}}",
 										"type": "text"
 									}
 								],
@@ -158,26 +156,11 @@
 						{
 							"name": "UpdateStudent",
 							"request": {
-								"auth": {
-									"type": "basic",
-									"basic": [
-										{
-											"key": "password",
-											"value": "password123",
-											"type": "string"
-										},
-										{
-											"key": "username",
-											"value": "admin",
-											"type": "string"
-										}
-									]
-								},
 								"method": "PUT",
 								"header": [
 									{
-										"key": "X-XSRF-TOKEN",
-										"value": "0c7a4369-5ef4-46d3-8347-cd45a33a7e05",
+										"key": "Authorization",
+										"value": "",
 										"type": "text"
 									}
 								],
@@ -206,7 +189,7 @@
 									"query": [
 										{
 											"key": "",
-											"value": "",
+											"value": "{{token}}",
 											"disabled": true
 										}
 									]
@@ -214,28 +197,45 @@
 							},
 							"response": []
 						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
 					]
 				},
 				{
 					"name": "GetStudent",
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "password",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "user",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:8080/api/v1/students/2",
 							"host": [
