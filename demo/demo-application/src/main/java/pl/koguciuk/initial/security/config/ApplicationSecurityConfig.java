@@ -3,15 +3,14 @@ package pl.koguciuk.initial.security.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import pl.koguciuk.initial.auth.service.ApplicationUserService;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,6 +23,7 @@ import static pl.koguciuk.initial.security.ApplicationUserRole.*;
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
+    private final ApplicationUserService applicationUserService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -56,31 +56,15 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    protected void configure(AuthenticationManagerBuilder auth) {
+        auth.authenticationProvider(daoAuthenticationProvider());
+    }
+
     @Bean
-    protected UserDetailsService userDetailsService() {
-        UserDetails user = User.builder()
-                .username("user")
-                .password(passwordEncoder.encode("password"))
-                .authorities(STUDENT.getGrantedAuthorities())
-                .build();
-
-        UserDetails admin = User.builder()
-                .username("admin")
-                .password(passwordEncoder.encode("password123"))
-                .authorities(ADMIN.getGrantedAuthorities())
-                .build();
-
-        UserDetails admin_trainee = User.builder()
-                .username("adminTrainee")
-                .password(passwordEncoder.encode("password123"))
-                .authorities(ADMIN_TRAINEE.getGrantedAuthorities())
-                .build();
-
-
-        return new InMemoryUserDetailsManager(
-                user,
-                admin,
-                admin_trainee
-        );
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(passwordEncoder);
+        provider.setUserDetailsService(applicationUserService);
+        return provider;
     }
 }

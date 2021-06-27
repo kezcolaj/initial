@@ -1,18 +1,18 @@
-package pl.koguciuk.initial.auth;
+package pl.koguciuk.initial.auth.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 public class ApplicationUser implements UserDetails {
 
-    private final List<? extends GrantedAuthority> authorities;
-    private final String password;
     private final String username;
+    private final String password;
+    private final Set<? extends GrantedAuthority> authorities;
     private final boolean isAccountNonExpired;
     private final boolean isAccountNonLocked;
     private final boolean isCredentialsNonExpired;
