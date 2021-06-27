@@ -7,4 +7,7 @@ dependencies {
     implementation "com.google.guava:guava:${guavaVersion}"
     implementation "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
     testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    compileOnly "io.jsonwebtoken:jjwt-api:${jwtVersion}"
+    runtimeOnly "io.jsonwebtoken:jjwt-impl:${jwtVersion}"
+    runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jwtVersion}"
 }

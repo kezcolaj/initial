@@ -7,6 +7,7 @@ buildscript {
         set("springBootVersion", "2.5.1")
         set("lombokVersion", "1.18.16")
         set("guavaVersion", "28.1-jre")
+        set("jwtVersion", "0.11.2")
     }
 
     dependencies {
