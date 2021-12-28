@@ -8,6 +8,8 @@ buildscript {
         set("lombokVersion", "1.18.16")
         set("guavaVersion", "28.1-jre")
         set("jwtVersion", "0.11.2")
+        set("spockVersion", "2.0-groovy-3.0")
+        set("groovyVersion", "3.0.8")
     }
 
     dependencies {
@@ -19,6 +21,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'groovy'
 
     group = 'pl.koguciuk.initial'
     version = '0.0.1-SNAPSHOT'
@@ -33,5 +36,9 @@ subprojects {
         testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
         compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    }
+
+    test {
+        useJUnitPlatform()
     }
 }
