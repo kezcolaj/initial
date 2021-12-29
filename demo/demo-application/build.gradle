@@ -4,14 +4,17 @@ dependencies {
 
     implementation "com.google.guava:guava:${guavaVersion}"
     implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
     implementation "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
     implementation "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
     implementation "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
+    implementation "org.postgresql:postgresql:${postgresVersion}"
     testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
     testImplementation "org.spockframework:spock-core:${spockVersion}"
     testImplementation "org.spockframework:spock-spring:${spockVersion}"
     testImplementation "org.codehaus.groovy:groovy-all:${groovyVersion}"
     compileOnly "io.jsonwebtoken:jjwt-api:${jwtVersion}"
+    compileOnly "org.liquibase:liquibase-core:${liquibaseVersion}"
     runtimeOnly "io.jsonwebtoken:jjwt-impl:${jwtVersion}"
     runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jwtVersion}"
 }

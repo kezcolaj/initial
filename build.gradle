@@ -10,6 +10,8 @@ buildscript {
         set("jwtVersion", "0.11.2")
         set("spockVersion", "2.0-groovy-3.0")
         set("groovyVersion", "3.0.8")
+        set("liquibaseVersion", "4.6.2")
+        set("postgresVersion", "42.2.24")
     }
 
     dependencies {

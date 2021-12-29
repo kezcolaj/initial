@@ -1,5 +1,11 @@
 application:
   jwt:
-    secretKey: "securesecuresecuresecuresecuresecuresecuresecuresecuresecuresecuresecuresecuresecuresecure"
+    secretKey: "bjdksaDSYAGDYUbSHADbsajkDBIdHJsbadhjbhdjasbdhjLBHASJDBGiaDBJHKsbaHJDBhjsakbhdjabsaBDGHYUiaL"
     tokenPrefix: "Bearer "
     tokenExpirationAfterDays: 14
+
+spring:
+  datasource:
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 5

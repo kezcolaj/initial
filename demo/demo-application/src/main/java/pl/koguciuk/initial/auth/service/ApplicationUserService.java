@@ -1,6 +1,6 @@
 package pl.koguciuk.initial.auth.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,14 +9,11 @@ import org.springframework.stereotype.Service;
 import pl.koguciuk.initial.auth.repository.ApplicationUserDao;
 
 @Service
+@RequiredArgsConstructor
 public class ApplicationUserService implements UserDetailsService {
 
+    @Qualifier("fake")
     private final ApplicationUserDao applicationUserDao;
-
-    @Autowired
-    public ApplicationUserService(@Qualifier("fake") ApplicationUserDao applicationUserDao) {
-        this.applicationUserDao = applicationUserDao;
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
