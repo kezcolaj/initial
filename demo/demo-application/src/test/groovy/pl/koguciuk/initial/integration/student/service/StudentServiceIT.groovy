@@ -1,11 +1,11 @@
 package pl.koguciuk.initial.integration.student.service
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
+import pl.koguciuk.initial.configuration.DemoIntegrationTest
 import pl.koguciuk.initial.student.service.StudentService
 import spock.lang.Specification
 
-@SpringBootTest
+@DemoIntegrationTest
 class StudentServiceIT extends Specification {
 
     @Autowired

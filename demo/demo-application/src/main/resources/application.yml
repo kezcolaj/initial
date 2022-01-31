@@ -9,3 +9,5 @@ spring:
     hikari:
       connection-timeout: 20000
       maximum-pool-size: 5
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml

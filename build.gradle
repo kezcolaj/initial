@@ -12,6 +12,8 @@ buildscript {
         set("groovyVersion", "3.0.8")
         set("liquibaseVersion", "4.6.2")
         set("postgresVersion", "42.2.24")
+        set("javaxValidationVersion", "2.0.1.Final")
+        set("testcontainersPostgresVersion", "1.16.2")
     }
 
     dependencies {

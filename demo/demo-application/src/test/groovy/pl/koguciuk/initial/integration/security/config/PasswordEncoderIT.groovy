@@ -1,11 +1,11 @@
 package pl.koguciuk.initial.integration.security.config
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.security.crypto.password.PasswordEncoder
+import pl.koguciuk.initial.configuration.DemoIntegrationTest
 import spock.lang.Specification
 
-@SpringBootTest
+@DemoIntegrationTest
 class PasswordEncoderIT extends Specification {
 
     @Autowired
