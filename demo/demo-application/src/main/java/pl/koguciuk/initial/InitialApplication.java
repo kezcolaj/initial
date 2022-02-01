@@ -16,7 +16,9 @@ import pl.koguciuk.initial.security.config.LibraryConfig;
         LibraryConfig.class,
         ApplicationSecurityConfig.class
 })
-@EnableJpaRepositories(basePackages = "pl.koguciuk.initial.auth.repository")
+@EnableJpaRepositories(basePackages = {
+        "pl.koguciuk.initial.user.repository"
+})
 public class InitialApplication {
 
     public static void main(String[] args) {

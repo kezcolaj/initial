@@ -1,3 +1,7 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/changes/00000_example.yaml
+      file: db/changelog/changes/00001_create_user_table.yaml
+  - include:
+      file: db/changelog/changes/00002_create_user_id_sequence.yaml
+  - include:
+      file: db/changelog/changes/00003_insert_initial_users.yaml

@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-user
+      author: Rafał Koguciuk
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: user_pk
+              - column:
+                  name: username
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expired
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: locked
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: credentials_expired
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: enabled
+                  type: boolean
+                  constraints:
+                    nullable: false

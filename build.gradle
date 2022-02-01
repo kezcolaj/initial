@@ -14,6 +14,7 @@ buildscript {
         set("postgresVersion", "42.2.24")
         set("javaxValidationVersion", "2.0.1.Final")
         set("testcontainersPostgresVersion", "1.16.2")
+        set("mapstructVersion", "1.4.2.Final")
     }
 
     dependencies {
@@ -40,6 +41,9 @@ subprojects {
         testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
         compileOnly "org.projectlombok:lombok:${lombokVersion}"
+
+        implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+        annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
     }
 
     test {

@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 00002_create_user_id_sequence
+      author: Rafał Koguciuk
+      changes:
+        - createSequence:
+            cacheSize: 1
+            cycle: false
+            dataType: bigint
+            incrementBy: 1
+            minValue: 4
+            schemaName: public
+            sequenceName: user_id_sequence
+            startValue: 4

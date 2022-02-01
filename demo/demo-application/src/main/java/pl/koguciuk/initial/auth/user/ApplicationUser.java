@@ -1,22 +1,28 @@
 package pl.koguciuk.initial.auth.user;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Set;
 
+@Getter
+@ToString
+@Builder
 @AllArgsConstructor
 public class ApplicationUser implements UserDetails {
 
-    private String username;
-    private String password;
-    private Set<? extends GrantedAuthority> authorities;
-    private boolean isAccountNonExpired;
-    private boolean isAccountNonLocked;
-    private boolean isCredentialsNonExpired;
-    private boolean isEnabled;
+    private final String username;
+    private final String password;
+    private final Set<? extends GrantedAuthority> authorities;
+    private final boolean expired;
+    private final boolean locked;
+    private final boolean credentialsExpired;
+    private final boolean enabled;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -35,21 +41,21 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return isAccountNonExpired;
+        return !expired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return isAccountNonLocked;
+        return !locked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return isCredentialsNonExpired;
+        return !credentialsExpired;
     }
 
     @Override
     public boolean isEnabled() {
-        return isEnabled;
+        return enabled;
     }
 }

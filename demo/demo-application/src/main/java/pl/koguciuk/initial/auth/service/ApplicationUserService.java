@@ -12,7 +12,7 @@ import pl.koguciuk.initial.auth.repository.ApplicationUserDao;
 @RequiredArgsConstructor
 public class ApplicationUserService implements UserDetailsService {
 
-    @Qualifier("fake")
+    @Qualifier("dbApplicationUserDao")
     private final ApplicationUserDao applicationUserDao;
 
     @Override

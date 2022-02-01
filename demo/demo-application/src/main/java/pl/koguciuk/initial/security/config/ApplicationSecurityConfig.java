@@ -18,7 +18,7 @@ import pl.koguciuk.initial.jwt.config.JwtConfig;
 
 import javax.crypto.SecretKey;
 
-import static pl.koguciuk.initial.security.ApplicationUserRole.*;
+import static pl.koguciuk.initial.security.ApplicationUserRole.STUDENT;
 
 @Configuration
 @EnableWebSecurity
