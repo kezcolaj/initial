@@ -3,6 +3,7 @@ package pl.koguciuk.initial.configuration;
 import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
@@ -15,7 +16,16 @@ import java.util.Map;
 public class PostgresContextConfiguration implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
     @Container
-    static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:14.1");
+    static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:14.1")
+            .withReuse(true);
+
+    @Bean(destroyMethod = "destroy")
+    public void removePostgresContainer() {
+        postgreSQLContainer.getDockerClient()
+                .removeContainerCmd(postgreSQLContainer.getContainerId())
+                .withForce(true)
+                .exec();
+    }
 
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
